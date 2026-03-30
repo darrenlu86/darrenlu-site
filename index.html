@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>呂紹民 Darren Lu — 產品經理 / Side Project Builder</title>
+<meta name="description" content="呂紹民（Darren Lu），產品經理，用 AI 打造 16+ 個 Side Project。歐哈拉智造所 Ohara Lab 創辦人。">
+<meta property="og:title" content="呂紹民 Darren Lu">
+<meta property="og:description" content="產品經理 / Side Project Builder / 歐哈拉智造所">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.darrenlu.com">
+<link rel="canonical" href="https://www.darrenlu.com">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --green: #7C9885;
+    --green-light: #B8C5B2;
+    --bg: #FAFAF8;
+    --bg-warm: #F5F2EF;
+    --text: #2D2D2D;
+    --text-light: #666;
+    --border: #E8E2DA;
+  }
+  body {
+    font-family: "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    color: var(--text); background: var(--bg); line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--green); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  /* Nav */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(250,250,248,0.92); backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+  }
+  nav .inner {
+    max-width: 960px; margin: 0 auto; padding: 14px 24px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  nav .logo { font-size: 16px; font-weight: 600; color: var(--text); }
+  nav .links { display: flex; gap: 24px; }
+  nav .links a { font-size: 14px; color: var(--text-light); }
+  nav .links a:hover { color: var(--green); text-decoration: none; }
+
+  /* Hero */
+  .hero {
+    min-height: 70vh; display: flex; align-items: center;
+    padding: 100px 24px 60px; max-width: 960px; margin: 0 auto;
+  }
+  .hero-content { max-width: 600px; }
+  .hero h1 { font-size: 36px; font-weight: 700; margin-bottom: 12px; line-height: 1.3; }
+  .hero .tagline { font-size: 18px; color: var(--text-light); margin-bottom: 24px; line-height: 1.6; }
+  .hero .links-row { display: flex; gap: 12px; flex-wrap: wrap; }
+  .hero .links-row a {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 8px 16px; border: 1px solid var(--border); border-radius: 6px;
+    font-size: 14px; color: var(--text-light); transition: all 0.2s;
+  }
+  .hero .links-row a:hover { border-color: var(--green); color: var(--green); text-decoration: none; }
+
+  /* Section */
+  section { padding: 60px 24px; max-width: 960px; margin: 0 auto; }
+  section h2 {
+    font-size: 24px; font-weight: 600; margin-bottom: 32px;
+    padding-bottom: 12px; border-bottom: 2px solid var(--border);
+  }
+
+  /* About */
+  .about p { font-size: 16px; margin-bottom: 16px; max-width: 680px; }
+
+  /* Projects grid */
+  .projects-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+  }
+  .project-card {
+    background: #fff; border: 1px solid var(--border); border-radius: 12px;
+    padding: 24px; transition: box-shadow 0.2s;
+  }
+  .project-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.06); }
+  .project-card .card-header {
+    display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px;
+  }
+  .project-card h3 { font-size: 17px; font-weight: 600; }
+  .project-card .badge {
+    font-size: 11px; padding: 2px 8px; border-radius: 10px;
+    background: var(--bg-warm); color: var(--text-light);
+  }
+  .project-card .badge.live { background: #e8f5e9; color: #2e7d32; }
+  .project-card .desc { font-size: 14px; color: var(--text-light); margin-bottom: 12px; line-height: 1.5; }
+  .project-card .tech { font-size: 12px; color: #999; }
+  .project-card .card-link {
+    display: inline-block; margin-top: 10px; font-size: 13px; color: var(--green);
+  }
+
+  /* Book section */
+  .book-section {
+    background: var(--bg-warm); padding: 60px 24px; margin: 40px 0;
+    border-radius: 16px;
+  }
+  .book-section .inner { max-width: 960px; margin: 0 auto; }
+  .book-section h2 { border-bottom-color: #ddd; }
+  .book-info { display: flex; gap: 40px; align-items: flex-start; }
+  .book-cover {
+    min-width: 200px; height: 260px; background: linear-gradient(135deg, #7C9885 0%, #5a7a66 100%);
+    border-radius: 8px; display: flex; flex-direction: column;
+    align-items: center; justify-content: center; color: #fff; padding: 20px;
+    box-shadow: 4px 4px 20px rgba(0,0,0,0.1);
+  }
+  .book-cover .book-title { font-size: 18px; font-weight: 700; text-align: center; margin-bottom: 8px; }
+  .book-cover .book-author { font-size: 13px; opacity: 0.8; }
+  .book-detail h3 { font-size: 20px; margin-bottom: 12px; }
+  .book-detail p { font-size: 15px; color: var(--text-light); margin-bottom: 16px; line-height: 1.7; }
+  .book-buttons { display: flex; gap: 12px; flex-wrap: wrap; }
+  .btn {
+    padding: 10px 24px; border-radius: 8px; font-size: 14px;
+    display: inline-block; transition: all 0.2s;
+  }
+  .btn-primary { background: var(--green); color: #fff; }
+  .btn-primary:hover { background: #6a8573; text-decoration: none; }
+  .btn-outline { border: 1px solid var(--green); color: var(--green); }
+  .btn-outline:hover { background: var(--green); color: #fff; text-decoration: none; }
+
+  /* Writing */
+  .writing-list { list-style: none; }
+  .writing-list li {
+    padding: 16px 0; border-bottom: 1px solid var(--border);
+    display: flex; justify-content: space-between; align-items: baseline;
+  }
+  .writing-list li:last-child { border-bottom: none; }
+  .writing-list .title { font-size: 15px; }
+  .writing-list .platform { font-size: 13px; color: #999; }
+
+  /* Footer */
+  footer {
+    text-align: center; padding: 40px 24px; color: #999; font-size: 13px;
+    border-top: 1px solid var(--border);
+  }
+
+  @media (max-width: 640px) {
+    .hero h1 { font-size: 28px; }
+    .book-info { flex-direction: column; }
+    .book-cover { min-width: 160px; height: 210px; }
+    .projects-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="inner">
+    <span class="logo">Darren Lu</span>
+    <div class="links">
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#book">Book</a>
+      <a href="#writing">Writing</a>
+    </div>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-content">
+    <h1>嗨，我是紹民。</h1>
+    <p class="tagline">
+      產品經理，六年經驗。白天在台灣的網路認證公司做產品創新，晚上用 AI 做 Side Project。目前累積了 16 個以上的專案，從靜態網站到 SaaS 服務都有。
+    </p>
+    <div class="links-row">
+      <a href="https://github.com/darrenlu86" target="_blank">GitHub</a>
+      <a href="https://linkedin.com/in/shaominglu" target="_blank">LinkedIn</a>
+      <a href="https://blog.darrenlu.com" target="_blank">Blog</a>
+      <a href="mailto:darrenlu86@gmail.com">Email</a>
+    </div>
+  </div>
+</section>
+
+<section id="about" class="about">
+  <h2>About</h2>
+  <p>資工系畢業，做了六年的產品經理。現職是台灣網路認證公司的產品創新經理，負責電子簽章、數位簽章相關的產品線。</p>
+  <p>2024 年開始大量用 AI 工具做 Side Project，發現一個人加上 AI，可以從零把一個想法做到上線。到現在已經做了十六個以上的專案，部署在 Cloudflare、Google Cloud Run、Vercel 等平台上。</p>
+  <p>經營歐哈拉智造所（Ohara Lab），把做專案過程中累積的模組和工具整理成可重用的架構。</p>
+</section>
+
+<section id="projects">
+  <h2>Projects</h2>
+  <div class="projects-grid">
+
+    <div class="project-card">
+      <div class="card-header">
+        <h3>謝卡醬</h3>
+        <span class="badge live">Live</span>
+      </div>
+      <p class="desc">婚禮感謝卡 SaaS 服務。十種色系、Email 寄送、PayUNI 金流、Excel 匯入。</p>
+      <span class="tech">Next.js + Cloudflare Workers + Resend</span>
+      <a class="card-link" href="https://card.oharalab.com" target="_blank">card.oharalab.com</a>
+    </div>
+
+    <div class="project-card">
+      <div class="card-header">
+        <h3>ExamBank 考題庫</h3>
+        <span class="badge live">Live</span>
+      </div>
+      <p class="desc">105 所學校、24 科目的考題搜尋平台，支援社群上傳。</p>
+      <span class="tech">Astro + FastAPI + Supabase</span>
+      <a class="card-link" href="https://exambank.darrenlu.com" target="_blank">exambank.darrenlu.com</a>
+    </div>
+
+    <div class="project-card">
+      <div class="card-header">
+        <h3>TutorKit 考卷解析</h3>
+        <span class="badge live">Live</span>
+      </div>
+      <p class="desc">上傳考卷照片，AI 自動辨識題目並生成解答。支援 10 科目。</p>
+      <span class="tech">Vite + FastAPI + Mistral OCR + Gemini</span>
+      <a class="card-link" href="https://tutorkit.darrenlu.com" target="_blank">tutorkit.darrenlu.com</a>
+    </div>
+
+    <div class="project-card">
+      <div class="card-header">
+        <h3>MemoryTale</h3>
+        <span class="badge live">Live</span>
+      </div>
+      <p class="desc">AI 口述歷史平台，用語音訪談幫長輩記錄人生故事。</p>
+      <span class="tech">Vanilla JS + Vite + FastAPI + Gemini</span>
+    </div>
+
+    <div class="project-card">
+      <div class="card-header">
+        <h3>EquityHunter</h3>
+        <span class="badge">Dev</span>
+      </div>
+      <p class="desc">自動化股票研究引擎。Scanner 篩選 + LLM 質化分析，295 個測試。</p>
+      <span class="tech">Python + yfinance + Claude API</span>
+    </div>
+
+    <div class="project-card">
+      <div class="card-header">
+        <h3>UnTyped</h3>
+        <span class="badge">App</span>
+      </div>
+      <p class="desc">桌面聽寫 App，支援 58 種語言。用 whisper.cpp 做本地語音辨識。</p>
+      <span class="tech">Electron + React + whisper.cpp</span>
+    </div>
+
+    <div class="project-card">
+      <div class="card-header">
+        <h3>小民的萬用工具箱</h3>
+        <span class="badge live">Live</span>
+      </div>
+      <p class="desc">30+ 個免費線上工具，涵蓋金融計算、日常換算。</p>
+      <span class="tech">Next.js + Tailwind + SSG</span>
+      <a class="card-link" href="https://tool.darrenlu.com" target="_blank">tool.darrenlu.com</a>
+    </div>
+
+    <div class="project-card">
+      <div class="card-header">
+        <h3>皂花拾光</h3>
+        <span class="badge live">Live</span>
+      </div>
+      <p class="desc">手工皂花品牌官網，含 Lightbox 作品集、SEO 優化。</p>
+      <span class="tech">HTML + CSS + Vanilla JS</span>
+      <a class="card-link" href="https://bloom.oharalab.com" target="_blank">bloom.oharalab.com</a>
+    </div>
+
+    <div class="project-card">
+      <div class="card-header">
+        <h3>Tranquil Music</h3>
+        <span class="badge">Auto</span>
+      </div>
+      <p class="desc">佛學短影片自動生成管線。文字生成、語音合成、影片製作到 YouTube 上傳。</p>
+      <span class="tech">Python + Gemini + Edge-TTS + YouTube API</span>
+    </div>
+
+    <div class="project-card">
+      <div class="card-header">
+        <h3>OurStory</h3>
+        <span class="badge live">Live</span>
+      </div>
+      <p class="desc">數位婚禮品牌，三欄式 Builder 編輯器 + 30 組件。</p>
+      <span class="tech">Next.js + Framer Motion</span>
+    </div>
+
+    <div class="project-card">
+      <div class="card-header">
+        <h3>GuideCard</h3>
+        <span class="badge live">Live</span>
+      </div>
+      <p class="desc">領隊圖卡服務，自動生成天氣卡、匯率卡。Firebase Auth + RevenueCat 訂閱制。</p>
+      <span class="tech">FastAPI + Pillow + Firebase</span>
+    </div>
+
+    <div class="project-card">
+      <div class="card-header">
+        <h3>CardButler</h3>
+        <span class="badge">App</span>
+      </div>
+      <p class="desc">名片管家 App，拍照後 AI 自動辨識名片資訊。Google Play Ready。</p>
+      <span class="tech">Flutter + FastAPI + Gemini</span>
+    </div>
+
+  </div>
+</section>
+
+<div class="book-section" id="book">
+  <div class="inner">
+    <h2>Book</h2>
+    <div class="book-info">
+      <div class="book-cover">
+        <div class="book-title">AI 時代的<br>產品開發思維</div>
+        <div class="book-author">呂紹民 著</div>
+      </div>
+      <div class="book-detail">
+        <h3>AI 時代的產品開發思維</h3>
+        <p>不用會寫程式，也能用 AI 打造完整軟體產品的方法論。23 章 + 3 附錄，涵蓋知識地圖、方法論、實戰流程、心智模型。</p>
+        <p>這本書不教寫程式。它給你一張地圖，讓你知道軟體產品是怎麼組成的，每個部分負責什麼，你該在什麼時候做什麼決定。</p>
+        <div class="book-buttons">
+          <a href="book/" class="btn btn-primary">線上閱讀</a>
+          <a href="https://github.com/darrenlu86/ai-product-book/releases/tag/v1.0" class="btn btn-outline" target="_blank">下載 PDF / EPUB</a>
+          <a href="https://github.com/darrenlu86/ai-product-book" class="btn btn-outline" target="_blank">GitHub</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section id="writing">
+  <h2>Writing</h2>
+  <ul class="writing-list">
+    <li>
+      <a class="title" href="https://blog.darrenlu.com" target="_blank">2024 年 FTX 債權收購：FTXCreditor 詳細流程懶人包</a>
+      <span class="platform">Substack</span>
+    </li>
+    <li>
+      <a class="title" href="https://blog.darrenlu.com" target="_blank">新手教學：如何開立個人匯票與支票？以郵局匯票為例</a>
+      <span class="platform">Substack</span>
+    </li>
+    <li>
+      <a class="title" href="https://blog.darrenlu.com" target="_blank">只要兩萬元就可以買下台北內湖土地？第一次參與「未辦繼承標售」就上手</a>
+      <span class="platform">Substack</span>
+    </li>
+    <li>
+      <a class="title" href="https://blog.darrenlu.com" target="_blank">企業數位化轉型：用五分鐘帶你建立電子簽章法的基礎知識</a>
+      <span class="platform">Substack</span>
+    </li>
+    <li>
+      <a class="title" href="https://blog.darrenlu.com" target="_blank">沉浸式翻譯：解決你所有雙語字幕、PDF 翻譯的超簡單軟體</a>
+      <span class="platform">Substack</span>
+    </li>
+  </ul>
+  <p style="margin-top: 20px; font-size: 14px; color: #999;">
+    更多文章在 <a href="https://blog.darrenlu.com" target="_blank">小民實戰筆記</a>（Substack）
+  </p>
+</section>
+
+<footer>
+  <p>&copy; 2026 呂紹民 Darren Lu / 歐哈拉智造所 Ohara Lab</p>
+</footer>
+
+</body>
+</html>
