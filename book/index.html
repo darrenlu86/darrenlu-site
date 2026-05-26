@@ -3,294 +3,352 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>閱讀 — AI 時代的產品開發思維</title>
+<title>AI 時代的產品開發思維 — 呂紹民</title>
+<meta name="description" content="不用會寫程式，也能用 AI 打造完整軟體產品的方法論。給完全不會寫程式的程式新人的一張知識地圖。23 章 + 3 附錄。作者：呂紹民（Darren Lu）。">
+<meta name="author" content="呂紹民（Darren Lu）">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://darrenlu.com/book/">
+
+<meta property="og:type" content="book">
+<meta property="og:title" content="AI 時代的產品開發思維">
+<meta property="og:description" content="不用會寫程式，也能用 AI 打造完整軟體產品的方法論。">
+<meta property="og:url" content="https://darrenlu.com/book/">
+<meta property="og:locale" content="zh_TW">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="AI 時代的產品開發思維 — 呂紹民">
+<meta name="twitter:description" content="不用會寫程式，也能用 AI 打造完整軟體產品的方法論。">
+
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Book",
+  "name": "AI 時代的產品開發思維",
+  "alternativeHeadline": "不用會寫程式，也能用 AI 打造完整軟體產品的方法論",
+  "author": {
+    "@type": "Person",
+    "name": "呂紹民",
+    "alternateName": "Darren Lu",
+    "url": "https://darrenlu.com/"
+  },
+  "inLanguage": "zh-TW",
+  "datePublished": "2026",
+  "url": "https://darrenlu.com/book/",
+  "numberOfPages": 23,
+  "workExample": [
+    {
+      "@type": "Book",
+      "bookFormat": "https://schema.org/EBook",
+      "encodingFormat": "application/pdf",
+      "url": "https://darrenlu.com/book/files/ai-product-book.pdf"
+    },
+    {
+      "@type": "Book",
+      "bookFormat": "https://schema.org/EBook",
+      "encodingFormat": "application/epub+zip",
+      "url": "https://darrenlu.com/book/files/ai-product-book.epub"
+    }
+  ]
+}
+</script>
+
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --ink: #1a1a1a;
+    --ink-soft: #3a3a3a;
+    --muted: #6b6b6b;
+    --paper: #fbfaf7;
+    --paper-2: #f3efe8;
+    --line: #e2ddd3;
+    --accent: #7c9885;
+    --accent-dark: #5d7866;
+  }
+  html { scroll-behavior: smooth; }
   body {
-    font-family: "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", sans-serif;
-    color: #2d2d2d; background: #fafaf8; line-height: 1.8;
+    font-family: "Noto Serif TC", "Source Han Serif TC", "Songti TC", "PingFang TC", serif;
+    color: var(--ink);
+    background: var(--paper);
+    line-height: 1.8;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--accent-dark); text-decoration: none; }
+  a:hover { color: var(--accent); text-decoration: underline; }
+
+  .container { max-width: 720px; margin: 0 auto; padding: 0 24px; }
+  .container-wide { max-width: 880px; margin: 0 auto; padding: 0 24px; }
+
+  .topnav {
+    border-bottom: 1px solid var(--line);
+    background: rgba(251,250,247,0.9);
+    backdrop-filter: blur(8px);
+    position: sticky; top: 0; z-index: 50;
+  }
+  .topnav-inner {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 14px 24px; max-width: 1080px; margin: 0 auto;
+    font-size: 14px;
+  }
+  .topnav .brand {
+    font-weight: 600; color: var(--ink);
+    font-family: "PingFang TC", sans-serif;
+  }
+  .topnav .links a {
+    margin-left: 18px; color: var(--muted);
+    font-family: "PingFang TC", sans-serif;
+  }
+  .topnav .links a:hover { color: var(--ink); text-decoration: none; }
+
+  .hero {
+    padding: 80px 0 60px;
+    border-bottom: 1px solid var(--line);
+    background: linear-gradient(180deg, var(--paper) 0%, var(--paper-2) 100%);
+  }
+  .hero .eyebrow {
+    font-family: "PingFang TC", sans-serif;
+    font-size: 13px; letter-spacing: 2px;
+    color: var(--accent-dark); text-transform: uppercase;
+    margin-bottom: 18px;
+  }
+  .hero h1 {
+    font-size: 44px; line-height: 1.3; font-weight: 700;
+    color: var(--ink); margin-bottom: 16px;
+    letter-spacing: 0.02em;
+  }
+  .hero .subtitle {
+    font-size: 19px; color: var(--ink-soft);
+    margin-bottom: 28px; line-height: 1.7;
+  }
+  .hero .author {
+    font-family: "PingFang TC", sans-serif;
+    font-size: 15px; color: var(--muted);
+    margin-bottom: 36px;
+  }
+  .hero .author strong { color: var(--ink-soft); font-weight: 600; }
+
+  .cta-row {
+    display: flex; flex-wrap: wrap; gap: 12px;
+    font-family: "PingFang TC", sans-serif;
+  }
+  .btn {
+    display: inline-flex; align-items: center;
+    padding: 13px 24px; border-radius: 4px;
+    font-size: 15px; font-weight: 500;
+    transition: transform 0.15s, background 0.15s, color 0.15s;
+    border: 1px solid transparent;
+    text-decoration: none;
+  }
+  .btn-primary { background: var(--accent); color: #fff; }
+  .btn-primary:hover {
+    background: var(--accent-dark); color: #fff;
+    text-decoration: none; transform: translateY(-1px);
+  }
+  .btn-outline {
+    background: transparent; color: var(--ink);
+    border-color: var(--ink-soft);
+  }
+  .btn-outline:hover {
+    background: var(--ink); color: var(--paper);
+    text-decoration: none; transform: translateY(-1px);
+  }
+  .btn-sm-note { font-size: 12px; opacity: 0.75; margin-left: 6px; }
+
+  section { padding: 64px 0; border-bottom: 1px solid var(--line); }
+  section h2 {
+    font-size: 28px; font-weight: 700; color: var(--ink);
+    margin-bottom: 28px; letter-spacing: 0.02em;
+  }
+  section p { font-size: 17px; color: var(--ink-soft); margin-bottom: 18px; }
+  section p strong { color: var(--ink); }
+
+  .lead {
+    font-size: 19px; line-height: 1.85; color: var(--ink-soft);
+    border-left: 3px solid var(--accent); padding-left: 20px;
+    margin-bottom: 28px;
   }
 
-  /* Progress bar */
-  .progress-bar {
-    position: fixed; top: 0; left: 0; height: 3px;
-    background: #7c9885; z-index: 1000; transition: width 0.1s;
-    width: 0%;
+  .toc-part { margin-bottom: 36px; }
+  .toc-part-label {
+    font-family: "PingFang TC", sans-serif;
+    font-size: 12px; font-weight: 600; letter-spacing: 2px;
+    color: var(--accent-dark); text-transform: uppercase;
+    margin-bottom: 14px; padding-bottom: 8px;
+    border-bottom: 1px solid var(--line);
+  }
+  .toc-list { list-style: none; }
+  .toc-list li { padding: 8px 0; }
+  .toc-list a {
+    display: flex; justify-content: space-between; align-items: baseline;
+    color: var(--ink-soft); font-size: 16px;
+    padding: 4px 0;
+  }
+  .toc-list a:hover { color: var(--accent-dark); text-decoration: none; }
+  .toc-list a .num {
+    font-family: "PingFang TC", sans-serif;
+    color: var(--muted); font-size: 13px;
+    margin-left: 12px; flex-shrink: 0;
   }
 
-  /* Top bar */
-  .top-bar {
-    position: fixed; top: 3px; left: 0; right: 0; height: 52px;
-    background: rgba(250,250,248,0.95); backdrop-filter: blur(8px);
-    border-bottom: 1px solid #e8e8e8; z-index: 100;
-    display: flex; align-items: center; padding: 0 20px;
+  footer {
+    padding: 40px 0 60px;
+    text-align: center;
+    font-family: "PingFang TC", sans-serif;
+    font-size: 13px; color: var(--muted);
   }
-  .top-bar .menu-toggle {
-    display: none; background: none; border: none; cursor: pointer;
-    font-size: 24px; color: #555; margin-right: 12px;
-  }
-  .top-bar .book-title {
-    font-size: 14px; color: #777; flex: 1;
-  }
-  .top-bar .book-title a { text-decoration: none; color: #777; }
-  .top-bar .book-title a:hover { color: #7c9885; }
-  .top-bar .current-chapter {
-    font-size: 13px; color: #999;
-  }
+  footer a { color: var(--muted); }
+  footer a:hover { color: var(--ink); }
 
-  /* Sidebar */
-  .sidebar {
-    position: fixed; top: 55px; left: 0; bottom: 0; width: 280px;
-    background: #f5f2ef; border-right: 1px solid #e0e0e0;
-    overflow-y: auto; padding: 20px 0; z-index: 50;
-  }
-  .sidebar .part-label {
-    font-size: 11px; font-weight: 600; color: #7c9885;
-    padding: 12px 20px 4px; text-transform: uppercase; letter-spacing: 1px;
-  }
-  .sidebar a {
-    display: block; padding: 8px 20px; font-size: 14px;
-    color: #555; text-decoration: none; transition: all 0.15s;
-    border-left: 3px solid transparent;
-  }
-  .sidebar a:hover { background: #ece8e3; color: #333; }
-  .sidebar a.active { background: #e8e2da; color: #1a1a1a; border-left-color: #7c9885; font-weight: 500; }
-
-  /* Main content */
-  .main-content {
-    margin-left: 280px; padding: 80px 40px 120px;
-    max-width: 1080px;
-  }
-  .chapter {
-    max-width: 720px; margin: 0 auto 80px; padding-top: 20px;
-  }
-  .chapter h1 {
-    font-size: 28px; font-weight: 700; color: #1a1a1a;
-    margin-bottom: 8px; padding-bottom: 12px; border-bottom: 2px solid #ddd;
-  }
-  .chapter .part-badge {
-    font-size: 12px; color: #7c9885; font-weight: 500; margin-bottom: 24px;
-    display: block;
-  }
-  .chapter h2 { font-size: 22px; font-weight: 600; margin: 36px 0 16px; color: #333; }
-  .chapter h3 { font-size: 18px; font-weight: 600; margin: 28px 0 12px; color: #444; }
-  .chapter p { margin-bottom: 16px; font-size: 16px; }
-  .chapter ul, .chapter ol { margin: 12px 0 16px 24px; }
-  .chapter li { margin-bottom: 6px; font-size: 16px; }
-  .chapter pre {
-    background: #f5f5f5; border: 1px solid #e0e0e0; border-radius: 6px;
-    padding: 16px; margin: 16px 0; overflow-x: auto;
-    font-family: "SF Mono", "Menlo", monospace; font-size: 14px; line-height: 1.5;
-    white-space: pre-wrap; word-wrap: break-word;
-  }
-  .chapter code {
-    font-family: "SF Mono", "Menlo", monospace; font-size: 14px;
-    background: #f0f0f0; padding: 1px 5px; border-radius: 3px;
-  }
-  .chapter pre code { background: none; padding: 0; }
-  .chapter blockquote {
-    border-left: 3px solid #b8c5b2; padding: 12px 16px;
-    margin: 16px 0; background: #f8f6f3; color: #555;
-  }
-  .chapter table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 15px; }
-  .chapter th, .chapter td { border: 1px solid #ddd; padding: 10px 14px; text-align: left; }
-  .chapter th { background: #f0ece7; font-weight: 600; }
-  .chapter strong { font-weight: 600; }
-  .chapter hr { border: none; border-top: 1px solid #e0e0e0; margin: 48px 0; }
-  .chapter img {
-    display: block; max-width: 100%; height: auto;
-    margin: 24px auto; border-radius: 4px;
-  }
-  .chapter p img {
-    display: block; max-width: 100%; height: auto;
-    margin: 24px auto;
-  }
-
-  /* Back to top */
-  .back-to-top {
-    position: fixed; bottom: 30px; right: 30px; width: 44px; height: 44px;
-    background: #7c9885; color: #fff; border: none; border-radius: 50%;
-    cursor: pointer; font-size: 20px; display: none; align-items: center;
-    justify-content: center; box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-    transition: opacity 0.2s;
-  }
-  .back-to-top:hover { background: #6a8573; }
-  .back-to-top.visible { display: flex; }
-
-  /* Sidebar overlay for mobile */
-  .sidebar-overlay {
-    display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
-    background: rgba(0,0,0,0.3); z-index: 40;
-  }
-
-  @media (max-width: 768px) {
-    .top-bar .menu-toggle { display: block; }
-    .sidebar { transform: translateX(-100%); transition: transform 0.3s; width: 260px; z-index: 50; }
-    .sidebar.open { transform: translateX(0); }
-    .sidebar-overlay.open { display: block; }
-    .main-content { margin-left: 0; padding: 70px 20px 100px; }
-    .chapter h1 { font-size: 24px; }
+  @media (max-width: 640px) {
+    .hero { padding: 56px 0 44px; }
+    .hero h1 { font-size: 32px; }
+    .hero .subtitle { font-size: 17px; }
+    section { padding: 48px 0; }
+    section h2 { font-size: 24px; }
+    .lead { font-size: 17px; }
+    .topnav .links a { margin-left: 12px; }
+    .btn { padding: 11px 18px; font-size: 14px; }
   }
 </style>
 </head>
 <body>
 
-<div class="progress-bar" id="progressBar"></div>
+<nav class="topnav" aria-label="Site">
+  <div class="topnav-inner">
+    <a class="brand" href="https://darrenlu.com/">Darren Lu</a>
+    <div class="links">
+      <a href="#about">關於本書</a>
+      <a href="#toc">章節目錄</a>
+      <a href="read.html">線上閱讀</a>
+    </div>
+  </div>
+</nav>
 
-<div class="top-bar">
-  <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">&#9776;</button>
-  <span class="book-title"><a href="index.html">AI 時代的產品開發思維</a></span>
-  <span class="current-chapter" id="currentChapter"></span>
-</div>
+<header class="hero">
+  <div class="container">
+    <div class="eyebrow">Book · 2026</div>
+    <h1>AI 時代的產品開發思維</h1>
+    <p class="subtitle">不用會寫程式，也能用 AI 打造完整軟體產品的方法論。<br>給完全不會寫程式的程式新人的一張知識地圖。</p>
+    <p class="author"><strong>呂紹民（Darren Lu）</strong>　·　23 章 + 3 附錄　·　繁體中文</p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="read.html">線上閱讀</a>
+      <a class="btn btn-outline" href="files/ai-product-book.pdf" download>下載 PDF<span class="btn-sm-note">3.7 MB</span></a>
+      <a class="btn btn-outline" href="files/ai-product-book.epub" download>下載 EPUB<span class="btn-sm-note">104 KB</span></a>
+    </div>
+  </div>
+</header>
 
-<div class="sidebar-overlay" id="sidebarOverlay"></div>
+<section id="about" aria-labelledby="about-h">
+  <div class="container">
+    <h2 id="about-h">關於這本書</h2>
+    <p class="lead">這兩年 AI 工具爆發，越來越多人想用 AI 來做自己的產品。他們卡住的地方，通常不是「不會寫程式」這件事——現在 AI 可以幫你寫大部分的程式碼。真正卡住的是：他們不知道一個軟體產品的全貌長什麼樣子。</p>
 
-<nav class="sidebar" id="sidebar"></nav>
+    <p>什麼是前端、什麼是後端？資料庫要怎麼選？部署是什麼意思？網域怎麼設定？金流串接要注意什麼？SEO 是在產品的哪個階段才要管的？這些東西分開來看都不難，但沒有人幫你把它們串在一起看過，你就是會覺得眼前一片迷霧。</p>
 
-<main class="main-content" id="mainContent"></main>
+    <p>所以這本書想做的事很單純：<strong>給你一張知識地圖。</strong></p>
 
-<button class="back-to-top" id="backToTop" aria-label="Back to top">&#8593;</button>
+    <p>我不會教你寫程式。市面上教寫程式的資源已經多到看不完了，何況現在有 AI 幫忙，寫程式本身的門檻已經低很多。這本書要幫你建立的是對整個軟體產品的理解，從概念到上線，中間會經過哪些環節、每個環節在做什麼、你需要做什麼決定。</p>
 
-<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-<script src="book-content.js"></script>
-<script>
-(function() {
-  // Configure marked
-  marked.setOptions({
-    gfm: true,
-    breaks: false
-  });
+    <p>有了這張地圖，你在用 AI 做產品的時候就不會迷路。你會知道自己現在在哪裡、下一步該往哪走、遇到問題該搜尋什麼關鍵字。</p>
 
-  // Markdown to HTML using marked.js, with image path fix
-  function md2html(md) {
-    // Fix image paths: assets/diagrams/ -> ../assets/diagrams/
-    var fixed = md.replace(/\]\(assets\/diagrams\//g, '](../assets/diagrams/');
-    return marked.parse(fixed);
-  }
+    <p>書裡會穿插不少我自己做 Side Project 的真實經驗。從婚禮邀請函、考題庫平台，到有在收費的 SaaS 都有。有些做得還不錯，有些踩了很多坑。這些經驗我會盡量誠實地寫出來，因為我覺得知道「別人在哪裡跌倒」比看一堆理論有用得多。</p>
+  </div>
+</section>
 
-  // Build sidebar
-  var sidebar = document.getElementById('sidebar');
-  var sidebarHtml = '';
-  var currentPart = '';
+<section id="toc" aria-labelledby="toc-h">
+  <div class="container">
+    <h2 id="toc-h">章節目錄</h2>
 
-  BOOK_CHAPTERS.forEach(function(ch) {
-    if (ch.part && ch.part !== currentPart) {
-      currentPart = ch.part;
-      sidebarHtml += '<div class="part-label">' + currentPart + '</div>';
-    }
-    sidebarHtml += '<a href="#' + ch.id + '" data-id="' + ch.id + '">' + ch.title + '</a>';
-  });
-  sidebar.innerHTML = sidebarHtml;
+    <div class="toc-part">
+      <div class="toc-part-label">序</div>
+      <ul class="toc-list">
+        <li><a href="read.html#preface"><span>前言</span><span class="num">序</span></a></li>
+      </ul>
+    </div>
 
-  // Build main content
-  var main = document.getElementById('mainContent');
-  var mainHtml = '';
-  BOOK_CHAPTERS.forEach(function(ch) {
-    mainHtml += '<div class="chapter" id="' + ch.id + '">';
-    if (ch.part) mainHtml += '<span class="part-badge">' + ch.part + '</span>';
-    mainHtml += '<h1>' + ch.title + '</h1>';
-    mainHtml += md2html(ch.content);
-    mainHtml += '</div>';
-  });
-  main.innerHTML = mainHtml;
+    <div class="toc-part">
+      <div class="toc-part-label">Part 0　在開始之前</div>
+      <ul class="toc-list">
+        <li><a href="read.html#ch1"><span>AI 改變了什麼，沒改變什麼</span><span class="num">第 1 章</span></a></li>
+        <li><a href="read.html#ch2"><span>指揮 AI 的前提：你腦中要有地圖</span><span class="num">第 2 章</span></a></li>
+      </ul>
+    </div>
 
-  // Sidebar active state & current chapter tracking
-  var chapterEls = document.querySelectorAll('.chapter');
-  var sidebarLinks = document.querySelectorAll('.sidebar a');
-  var currentChapterEl = document.getElementById('currentChapter');
+    <div class="toc-part">
+      <div class="toc-part-label">Part 1　知識地圖 — 軟體產品的組成</div>
+      <ul class="toc-list">
+        <li><a href="read.html#ch3"><span>全貌：一個軟體產品長什麼樣</span><span class="num">第 3 章</span></a></li>
+        <li><a href="read.html#ch4"><span>前端：使用者看到的一切</span><span class="num">第 4 章</span></a></li>
+        <li><a href="read.html#ch5"><span>後端：幕後的工作</span><span class="num">第 5 章</span></a></li>
+        <li><a href="read.html#ch6"><span>API：前後端的溝通語言</span><span class="num">第 6 章</span></a></li>
+        <li><a href="read.html#ch7"><span>資料庫：產品的記憶</span><span class="num">第 7 章</span></a></li>
+        <li><a href="read.html#ch8"><span>第三方服務：不用自己造輪子</span><span class="num">第 8 章</span></a></li>
+        <li><a href="read.html#ch9"><span>部署：從「我的電腦能跑」到「全世界都能用」</span><span class="num">第 9 章</span></a></li>
+        <li><a href="read.html#ch10"><span>維運：產品是活的</span><span class="num">第 10 章</span></a></li>
+      </ul>
+    </div>
 
-  function updateActiveChapter() {
-    var scrollY = window.scrollY + 120;
-    var active = null;
-    chapterEls.forEach(function(el) {
-      if (el.offsetTop <= scrollY) active = el;
-    });
-    if (active) {
-      var id = active.id;
-      sidebarLinks.forEach(function(link) {
-        link.classList.toggle('active', link.dataset.id === id);
-      });
-      var ch = BOOK_CHAPTERS.find(function(c) { return c.id === id; });
-      if (ch) currentChapterEl.textContent = ch.title;
-      // Scroll sidebar to show active link
-      var activeLink = sidebar.querySelector('a.active');
-      if (activeLink) {
-        var linkTop = activeLink.offsetTop;
-        var sidebarH = sidebar.clientHeight;
-        if (linkTop < sidebar.scrollTop || linkTop > sidebar.scrollTop + sidebarH) {
-          sidebar.scrollTop = linkTop - sidebarH / 3;
-        }
-      }
-    }
-  }
+    <div class="toc-part">
+      <div class="toc-part-label">Part 2　方法論 — 怎麼用 AI 走完全程</div>
+      <ul class="toc-list">
+        <li><a href="read.html#ch11"><span>核心方法：分層下指令</span><span class="num">第 11 章</span></a></li>
+        <li><a href="read.html#ch12"><span>讓 AI 自己研究，你負責決策</span><span class="num">第 12 章</span></a></li>
+        <li><a href="read.html#ch13"><span>CLAUDE.md：教 AI 認識你的專案</span><span class="num">第 13 章</span></a></li>
+        <li><a href="read.html#ch14"><span>迭代思維：先求有，再求好</span><span class="num">第 14 章</span></a></li>
+        <li><a href="read.html#ch15"><span>驗收的能力比指揮的能力更重要</span><span class="num">第 15 章</span></a></li>
+      </ul>
+    </div>
 
-  // Progress bar
-  var progressBar = document.getElementById('progressBar');
-  function updateProgress() {
-    var scrollTop = window.scrollY;
-    var docHeight = document.documentElement.scrollHeight - window.innerHeight;
-    var progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
-    progressBar.style.width = progress + '%';
-  }
+    <div class="toc-part">
+      <div class="toc-part-label">Part 3　實戰流程 — 從想法到上線</div>
+      <ul class="toc-list">
+        <li><a href="read.html#ch16"><span>Phase 1：定義（30 分鐘）</span><span class="num">第 16 章</span></a></li>
+        <li><a href="read.html#ch17"><span>Phase 2：建造（數小時到數天）</span><span class="num">第 17 章</span></a></li>
+        <li><a href="read.html#ch18"><span>Phase 3：測試（1-2 小時）</span><span class="num">第 18 章</span></a></li>
+        <li><a href="read.html#ch19"><span>Phase 4：上線（1 小時）</span><span class="num">第 19 章</span></a></li>
+        <li><a href="read.html#ch20"><span>Phase 5：迭代（持續進行）</span><span class="num">第 20 章</span></a></li>
+      </ul>
+    </div>
 
-  // Back to top
-  var backToTop = document.getElementById('backToTop');
-  function updateBackToTop() {
-    backToTop.classList.toggle('visible', window.scrollY > 400);
-  }
-  backToTop.addEventListener('click', function() {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
+    <div class="toc-part">
+      <div class="toc-part-label">Part 4　心智模型 — 長期受用的思維方式</div>
+      <ul class="toc-list">
+        <li><a href="read.html#ch21"><span>懂得怎麼問，比什麼都懂更重要</span><span class="num">第 21 章</span></a></li>
+        <li><a href="read.html#ch22"><span>分辨「AI 該決定的」vs「你該決定的」</span><span class="num">第 22 章</span></a></li>
+        <li><a href="read.html#ch23"><span>安全意識與成本意識</span><span class="num">第 23 章</span></a></li>
+      </ul>
+    </div>
 
-  // Scroll handler
-  var ticking = false;
-  window.addEventListener('scroll', function() {
-    if (!ticking) {
-      requestAnimationFrame(function() {
-        updateActiveChapter();
-        updateProgress();
-        updateBackToTop();
-        ticking = false;
-      });
-      ticking = true;
-    }
-  });
+    <div class="toc-part">
+      <div class="toc-part-label">附錄</div>
+      <ul class="toc-list">
+        <li><a href="read.html#appendix-a"><span>知識地圖速查表</span><span class="num">附錄 A</span></a></li>
+        <li><a href="read.html#appendix-b"><span>跟 AI 對話的黃金問句</span><span class="num">附錄 B</span></a></li>
+        <li><a href="read.html#appendix-c"><span>常見的「我不知道自己不知道」</span><span class="num">附錄 C</span></a></li>
+        <li><a href="read.html#後記"><span>後記</span><span class="num">後記</span></a></li>
+      </ul>
+    </div>
+  </div>
+</section>
 
-  // Mobile menu toggle
-  var menuToggle = document.getElementById('menuToggle');
-  var sidebarOverlay = document.getElementById('sidebarOverlay');
+<section id="download" aria-labelledby="dl-h">
+  <div class="container">
+    <h2 id="dl-h">下載與閱讀</h2>
+    <p>本書全文公開，歡迎自由下載。線上版適合在電腦或手機瀏覽器上閱讀；PDF 適合列印與離線閱讀；EPUB 適合用 Apple Books、Kindle 或其他電子書閱讀器。</p>
+    <div class="cta-row" style="margin-top: 24px;">
+      <a class="btn btn-primary" href="read.html">線上閱讀全書</a>
+      <a class="btn btn-outline" href="files/ai-product-book.pdf" download>下載 PDF</a>
+      <a class="btn btn-outline" href="files/ai-product-book.epub" download>下載 EPUB</a>
+    </div>
+  </div>
+</section>
 
-  menuToggle.addEventListener('click', function() {
-    sidebar.classList.toggle('open');
-    sidebarOverlay.classList.toggle('open');
-  });
-  sidebarOverlay.addEventListener('click', function() {
-    sidebar.classList.remove('open');
-    sidebarOverlay.classList.remove('open');
-  });
+<footer>
+  <div class="container-wide">
+    <p>© 2026 呂紹民（Darren Lu）　·　<a href="https://darrenlu.com/">darrenlu.com</a></p>
+  </div>
+</footer>
 
-  // Close sidebar on link click (mobile)
-  sidebarLinks.forEach(function(link) {
-    link.addEventListener('click', function() {
-      if (window.innerWidth <= 768) {
-        sidebar.classList.remove('open');
-        sidebarOverlay.classList.remove('open');
-      }
-    });
-  });
-
-  // Handle hash on load
-  if (window.location.hash) {
-    setTimeout(function() {
-      var target = document.querySelector(window.location.hash);
-      if (target) target.scrollIntoView();
-    }, 100);
-  }
-
-  // Initial
-  updateActiveChapter();
-  updateProgress();
-})();
-</script>
 </body>
 </html>
