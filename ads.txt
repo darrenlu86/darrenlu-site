@@ -1,0 +1,4 @@
+# darrenlu.com 本身不投放廣告。
+# 廣告僅授權於以下子網域，各自維護自己的 ads.txt：
+subdomain=tool.darrenlu.com
+subdomain=exambank.darrenlu.com
