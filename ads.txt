@@ -1,4 +1,4 @@
-# darrenlu.com 本身不投放廣告。
-# 廣告僅授權於以下子網域，各自維護自己的 ads.txt：
-subdomain=tool.darrenlu.com
-subdomain=exambank.darrenlu.com
+# AdSense 帳號僅能登記根網域，此帳號 ID 涵蓋 darrenlu.com 及其子網域。
+# darrenlu.com 本身頁面未嵌入任何廣告代碼，不會實際顯示廣告。
+# 實際顯示廣告的子網域：tool.darrenlu.com、exambank.darrenlu.com（各自也有獨立 ads.txt）。
+google.com, pub-7360606198975334, DIRECT, f08c47fec0942fa0
